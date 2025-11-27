@@ -5,4 +5,16 @@
     <string name="login_btn">Log In</string>
     <string name="view_history_btn">View History</string>
     <string name="update_btn">My info</string>
+    <string name="register_form_btn">Register New User</string>
+    <string name="create_new_user_btn">Create New User</string>
+    <string name="vechicle_type">vechicle type</string>
+    <string name="birth_date">birth date</string>
+    <string name="license">license</string>
+    <string name="is_driver">Driver?</string>
+    <string name="address">address</string>
+    <string name="phone_number">phone number</string>
+    <string name="surname">surname</string>
+    <string name="name">name</string>
+    <string name="password">password</string>
+    <string name="username">username</string>
 </resources>

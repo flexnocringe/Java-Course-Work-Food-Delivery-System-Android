@@ -66,6 +66,6 @@ public class Restaurant extends BasicUser{
 
     @Override
     public String toString() {
-        return this.username;
+        return this.username+" ";
     }
 }

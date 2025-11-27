@@ -16,14 +16,17 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.JavaCourseWorkAndoid">
         <activity
-            android:name=".MenuActivity"
+            android:name=".activities.RegistrationActivity"
             android:exported="false" />
         <activity
-            android:name=".WoltRestaurants"
+            android:name=".activities.MenuActivity"
+            android:exported="false" />
+        <activity
+            android:name=".activities.WoltRestaurants"
             android:exported="false"
             android:theme="@style/Theme.JavaCourseWorkAndoid" />
         <activity
-            android:name=".MainActivity"
+            android:name=".activities.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

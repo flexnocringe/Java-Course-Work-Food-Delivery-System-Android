@@ -1,13 +1,12 @@
-package com.example.javacourseworkandoid;
+package com.example.javacourseworkandoid.activities;
 
-import static com.example.javacourseworkandoid.Constants.VALIDATE_USER_URL;
+import static com.example.javacourseworkandoid.utils.Constants.VALIDATE_USER_URL;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -16,11 +15,10 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.javacourseworkandoid.R;
+import com.example.javacourseworkandoid.utils.RestOperations;
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
-
-import org.w3c.dom.Text;
 
 import java.io.IOException;
 import java.util.concurrent.Executor;
@@ -69,5 +67,10 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void goToRegisterForm(View view) {
+        Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+        startActivity(intent);
     }
 }
