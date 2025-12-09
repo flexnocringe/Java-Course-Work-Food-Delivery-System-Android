@@ -1,5 +1,7 @@
 package com.example.javacourseworkandoid.model;
 
+import androidx.annotation.NonNull;
+
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -121,5 +123,10 @@ public class FoodOrder {
 
     public void setDateUpdated(LocalDateTime dateUpdated) {
         this.dateUpdated = dateUpdated;
+    }
+
+    @Override
+    public String toString() {
+        return name+" | "+price+" | "+orderStatus;
     }
 }

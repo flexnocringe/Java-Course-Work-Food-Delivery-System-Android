@@ -22,6 +22,7 @@ import com.example.javacourseworkandoid.R;
 import com.example.javacourseworkandoid.model.BasicUser;
 import com.example.javacourseworkandoid.model.Driver;
 import com.example.javacourseworkandoid.model.VechicleType;
+import com.example.javacourseworkandoid.utils.LocalDateSerializer;
 import com.example.javacourseworkandoid.utils.LocalDateTimeSerializer;
 import com.example.javacourseworkandoid.utils.RestOperations;
 import com.google.gson.Gson;
@@ -64,9 +65,11 @@ public class RegistrationActivity extends AppCompatActivity {
         String userInfo;
         GsonBuilder build = new GsonBuilder();
         build.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
+        build.registerTypeAdapter(LocalDate.class, new LocalDateSerializer());
         Gson gson = build.setPrettyPrinting().create();
         if(isDriver.isChecked()){
-            Driver driver = new Driver(username.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString(), phone.getText().toString(), LocalDateTime.now(), address.getText().toString(), license.getText().toString(), LocalDate.parse( birthDate.getText()), VechicleType.valueOf(vechicle.getText().toString()));
+            Driver driver = new Driver(username.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString(), phone.getText().toString(), LocalDateTime.now(), address.getText().toString(), license.getText().toString(), LocalDate.parse( birthDate.getText().toString()), VechicleType.valueOf(vechicle.getText().toString()));
+            System.out.println(driver.getBirthDate());
             userInfo = gson.toJson(driver);
         } else {
             BasicUser user = new BasicUser(username.getText().toString(), password.getText().toString(), name.getText().toString(), surname.getText().toString(), phone.getText().toString(), LocalDateTime.now(), address.getText().toString());

@@ -36,6 +36,8 @@ import java.util.concurrent.Executors;
 
 public class WoltRestaurants extends AppCompatActivity {
 
+    private int userId;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,15 +55,15 @@ public class WoltRestaurants extends AppCompatActivity {
         GsonBuilder build = new GsonBuilder();
         build.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         gson = build.setPrettyPrinting().create();
-        var connectedUser = gson.fromJson(userInfo, User.class);
+        var connectedUser = gson.fromJson(userInfo, BasicUser.class);
+        userId = connectedUser.getId();
         System.out.println(connectedUser.getClass());
 
         if(connectedUser instanceof Driver){
 
         } else if(connectedUser instanceof Restaurant){
             System.out.println("This is not for you punk");
-        } else if (connectedUser instanceof User){
-            System.out.println("all good");
+        } else if (connectedUser instanceof BasicUser){
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
 
@@ -85,8 +87,8 @@ public class WoltRestaurants extends AppCompatActivity {
                                 restaurantListElement.setAdapter(adapter);
 
                                 restaurantListElement.setOnItemClickListener((parent, view, position, id)->{
-                                    System.out.println(restaurantListFromJson.get(position));
                                     Intent menuIntent = new Intent(WoltRestaurants.this, MenuActivity.class);
+                                    menuIntent.putExtra("restaurantId", restaurantListFromJson.get(position).getId());
                                     startActivity(menuIntent);
 
                                 });
@@ -103,6 +105,10 @@ public class WoltRestaurants extends AppCompatActivity {
     }
 
     public void viewPurchaseHistory(View view) {
+        Intent intent = new Intent(WoltRestaurants.this, MyOrdersActivity.class);
+        intent.putExtra("userId", userId);
+        startActivity(intent);
+
     }
 
     public void viewMyAccount(View view) {
