@@ -14,6 +14,8 @@ public class FoodOrder {
     private Chat chat;
     private BasicUser buyer;
     private Restaurant restaurant;
+
+    private Driver driver;
     private OrderStatus orderStatus;
     private LocalDateTime dateCreated;
     private LocalDateTime dateUpdated;
@@ -127,6 +129,6 @@ public class FoodOrder {
 
     @Override
     public String toString() {
-        return name+" | "+price+" | "+orderStatus;
+        return name+" | price:"+price+" | order status:"+orderStatus+" | restaurant: "+restaurant+" | driver: "+driver;
     }
 }

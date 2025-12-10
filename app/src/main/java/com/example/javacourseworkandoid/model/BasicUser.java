@@ -68,6 +68,6 @@ public class BasicUser extends User {
 
     @Override
     public String toString() {
-        return this.name+" "+this.surname;
+        return this.username;
     }
 }

@@ -124,6 +124,6 @@ public class FoodItem {
 
     @Override
     public String toString() {
-        return "name: "+name+" | "+"price: "+price+" | portion size: "+portionSize+" | spicy?: "+spicy+" | vegan?: "+vegan;
+        return "name: "+name+" | "+"price: "+price+" | portion size: "+portionSize+" | spicy?: "+spicy+" | vegan?: "+vegan+" | ingridients:"+ingredients;
     }
 }

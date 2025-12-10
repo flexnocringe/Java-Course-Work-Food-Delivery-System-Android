@@ -1,9 +1,6 @@
 package com.example.javacourseworkandoid.activities;
 
-import static com.example.javacourseworkandoid.utils.Constants.CREATE_BASIC_USER_URL;
-import static com.example.javacourseworkandoid.utils.Constants.CREATE_DRIVER_URL;
 import static com.example.javacourseworkandoid.utils.Constants.CREATE_NEW_FOOD_ORDER;
-import static com.example.javacourseworkandoid.utils.Constants.GET_BUYERS_ORDERS_URL;
 import static com.example.javacourseworkandoid.utils.Constants.GET_RESTAURANT_FOOD_ITEMS_URL;
 
 import android.content.Intent;
@@ -23,11 +20,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.example.javacourseworkandoid.R;
-import com.example.javacourseworkandoid.model.BasicUser;
-import com.example.javacourseworkandoid.model.Driver;
 import com.example.javacourseworkandoid.model.FoodItem;
-import com.example.javacourseworkandoid.model.FoodOrder;
-import com.example.javacourseworkandoid.model.VechicleType;
 import com.example.javacourseworkandoid.utils.LocalDateSerializer;
 import com.example.javacourseworkandoid.utils.LocalDateTimeSerializer;
 import com.example.javacourseworkandoid.utils.RestOperations;
@@ -155,7 +148,7 @@ public class MenuActivity extends AppCompatActivity {
                     if(!response.equals("Error!")){
                         Intent thisIntent = getIntent();
                         String userInfo = thisIntent.getStringExtra("userInfo");
-                        Intent intent = new Intent(MenuActivity.this, WoltRestaurants.class);
+                        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
                         intent.putExtra("userId", userId);
                         intent.putExtra("userJsonObject", userInfo);
                         startActivity(intent);
@@ -166,5 +159,14 @@ public class MenuActivity extends AppCompatActivity {
             }
 
         });
+    }
+
+    public void goBackFromMenu(View view) {
+        Intent thisIntent = getIntent();
+        String userInfo = thisIntent.getStringExtra("userInfo");
+        Intent intent = new Intent(MenuActivity.this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userJsonObject", userInfo);
+        startActivity(intent);
     }
 }

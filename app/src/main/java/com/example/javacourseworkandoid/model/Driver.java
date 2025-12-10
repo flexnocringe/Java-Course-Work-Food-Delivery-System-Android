@@ -10,6 +10,8 @@ public class Driver extends BasicUser {
 
     private VechicleType vechicleType;
 
+
+
     public Driver() {
     }
 

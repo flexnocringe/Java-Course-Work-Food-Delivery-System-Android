@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -88,4 +89,14 @@ public class MyOrdersActivity extends AppCompatActivity {
                 }
             });
         }
+
+    public void goBackFromOrders(View view) {
+        Intent thisIntent = getIntent();
+        String userInfo = thisIntent.getStringExtra("userJsonObject");
+        userId = thisIntent.getIntExtra("userId", 0);
+        Intent intent = new Intent(MyOrdersActivity.this, MainActivity.class);
+        intent.putExtra("userId", userId);
+        intent.putExtra("userJsonObject", userInfo);
+        startActivity(intent);
+    }
 }
