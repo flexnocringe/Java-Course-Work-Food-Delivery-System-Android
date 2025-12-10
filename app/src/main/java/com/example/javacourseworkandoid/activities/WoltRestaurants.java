@@ -23,6 +23,7 @@ import com.example.javacourseworkandoid.model.Restaurant;
 import com.example.javacourseworkandoid.model.User;
 import com.example.javacourseworkandoid.utils.LocalDateTimeSerializer;
 import com.example.javacourseworkandoid.utils.RestOperations;
+import com.example.javacourseworkandoid.utils.RuntimeTypeAdapterFactory;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
@@ -50,7 +51,7 @@ public class WoltRestaurants extends AppCompatActivity {
             return insets;
         });
 
-        your.RuntimeTypeAdapterFactory<User> userAdapter = your.RuntimeTypeAdapterFactory
+        RuntimeTypeAdapterFactory<User> userAdapter = RuntimeTypeAdapterFactory
                 .of(User.class, "type")
                 .registerSubtype(Driver.class, "Driver")
                 .registerSubtype(BasicUser.class, "BasicUser")
@@ -61,6 +62,7 @@ public class WoltRestaurants extends AppCompatActivity {
         userId = intent.getIntExtra("userId", 0);
         Gson gson = new Gson();
         GsonBuilder build = new GsonBuilder();
+        build.registerTypeAdapterFactory(userAdapter);
         build.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         gson = build.setPrettyPrinting().create();
         User connectedUser = gson.fromJson(userInfo, User.class);
@@ -70,9 +72,8 @@ public class WoltRestaurants extends AppCompatActivity {
 
 
         if(connectedUser instanceof Driver){
-            System.out.println("driver");
+
         } else if (connectedUser instanceof BasicUser){
-            System.out.println("basicUser");
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
 
