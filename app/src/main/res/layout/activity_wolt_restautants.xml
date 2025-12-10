@@ -26,21 +26,23 @@
         android:id="@+id/history_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/view_history_btn"
         android:onClick="viewPurchaseHistory"
+        android:text="@string/view_history_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/update_btn"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_list" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_list"
+        app:layout_constraintVertical_bias="0.309" />
 
     <Button
         android:id="@+id/update_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/update_btn"
         android:onClick="viewMyAccount"
+        android:text="@string/update_btn"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/history_btn"
-        app:layout_constraintTop_toBottomOf="@+id/restaurant_list" />
+        app:layout_constraintTop_toBottomOf="@+id/restaurant_list"
+        app:layout_constraintVertical_bias="0.309" />
 </androidx.constraintlayout.widget.ConstraintLayout>

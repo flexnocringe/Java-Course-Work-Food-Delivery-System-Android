@@ -6,7 +6,10 @@ public class Constants {
     public static final String GET_ALL_RESTAURANTS_URL = HOME_URL + "allRestaurants";
     public static final String CREATE_BASIC_USER_URL = HOME_URL + "createNewBasicUser";
     public static final String CREATE_DRIVER_URL = HOME_URL + "createNewDriver";
+    public static final String CREATE_NEW_FOOD_ORDER = HOME_URL + "createNewOrder";
     public static final String GET_BUYERS_ORDERS_URL = HOME_URL + "getBuyersOrders/";
     public static final String GET_RESTAURANT_FOOD_ITEMS_URL = HOME_URL + "restaurantFoodItems/";
-    public static final String GET_ORDER_MESSAGES_URL = HOME_URL;
+    public static final String GET_ORDER_MESSAGES_URL = HOME_URL + "getMessagesForOrder/";
+    public static final String SEND_MESSAGE = HOME_URL + "sendMessage";
+    public static final String UPDATE_USER_BY_ID = HOME_URL + "updateBasicUser/";
 }

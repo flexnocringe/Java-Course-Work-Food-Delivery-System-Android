@@ -37,6 +37,7 @@ import java.util.concurrent.Executors;
 public class WoltRestaurants extends AppCompatActivity {
 
     private int userId;
+    private String userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,21 +50,29 @@ public class WoltRestaurants extends AppCompatActivity {
             return insets;
         });
 
+        your.RuntimeTypeAdapterFactory<User> userAdapter = your.RuntimeTypeAdapterFactory
+                .of(User.class, "type")
+                .registerSubtype(Driver.class, "Driver")
+                .registerSubtype(BasicUser.class, "BasicUser")
+                .registerSubtype(User.class, "User");
+
         Intent intent = getIntent();
-        String userInfo = intent.getStringExtra("userJsonObject");
+        userInfo = intent.getStringExtra("userJsonObject");
+        userId = intent.getIntExtra("userId", 0);
         Gson gson = new Gson();
         GsonBuilder build = new GsonBuilder();
         build.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializer());
         gson = build.setPrettyPrinting().create();
-        var connectedUser = gson.fromJson(userInfo, BasicUser.class);
-        userId = connectedUser.getId();
-        System.out.println(connectedUser.getClass());
+        User connectedUser = gson.fromJson(userInfo, User.class);
+        if(userId==0) {
+            userId = connectedUser.getId();
+        }
+
 
         if(connectedUser instanceof Driver){
-
-        } else if(connectedUser instanceof Restaurant){
-            System.out.println("This is not for you punk");
+            System.out.println("driver");
         } else if (connectedUser instanceof BasicUser){
+            System.out.println("basicUser");
             Executor executor = Executors.newSingleThreadExecutor();
             Handler handler = new Handler(Looper.getMainLooper());
 
@@ -83,14 +92,15 @@ public class WoltRestaurants extends AppCompatActivity {
                                 List<Restaurant> restaurantListFromJson = gsonRestaurants.fromJson(response, restaurantListType);
 
                                 ListView restaurantListElement = findViewById(R.id.restaurant_list);
-                                ArrayAdapter adapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, restaurantListFromJson);
+                                ArrayAdapter adapter = new ArrayAdapter(WoltRestaurants.this, android.R.layout.simple_list_item_1, restaurantListFromJson);
                                 restaurantListElement.setAdapter(adapter);
 
                                 restaurantListElement.setOnItemClickListener((parent, view, position, id)->{
                                     Intent menuIntent = new Intent(WoltRestaurants.this, MenuActivity.class);
                                     menuIntent.putExtra("restaurantId", restaurantListFromJson.get(position).getId());
+                                    menuIntent.putExtra("userId", userId);
+                                    menuIntent.putExtra("userInfo", userInfo);
                                     startActivity(menuIntent);
-
                                 });
                             }
                         } catch (Exception e){
@@ -108,9 +118,13 @@ public class WoltRestaurants extends AppCompatActivity {
         Intent intent = new Intent(WoltRestaurants.this, MyOrdersActivity.class);
         intent.putExtra("userId", userId);
         startActivity(intent);
-
     }
 
     public void viewMyAccount(View view) {
+        Intent intentForUpdate = new Intent(WoltRestaurants.this, RegistrationActivity.class);
+        intentForUpdate.putExtra("isForUpdate", true);
+        intentForUpdate.putExtra("userInfo", userInfo);
+        intentForUpdate.putExtra("userId", userId);
+        startActivity(intentForUpdate);
     }
 }

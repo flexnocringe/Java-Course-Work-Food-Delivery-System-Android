@@ -58,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
                 handler.post(()->{
                     if(!response.equals("Error!")){
                         Intent intent = new Intent(MainActivity.this, WoltRestaurants.class);
+                        intent.putExtra("parentActivity", "Main");
                         intent.putExtra("userJsonObject", response);
                         startActivity(intent);
                     }
@@ -71,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void goToRegisterForm(View view) {
         Intent intent = new Intent(MainActivity.this, RegistrationActivity.class);
+        intent.putExtra("isForUpdate", false);
+        intent.putExtra("userInfo", "");
         startActivity(intent);
     }
 }

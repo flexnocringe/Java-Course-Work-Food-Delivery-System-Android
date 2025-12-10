@@ -17,4 +17,9 @@
     <string name="name">name</string>
     <string name="password">password</string>
     <string name="username">username</string>
+    <string name="send_message_btn">Send Message</string>
+    <string name="create_order_btn">Place Order</string>
+    <string name="total_price">Total Price:</string>
+    <string name="update_user">Update User</string>
+    <string name="go_back">Go Back</string>
 </resources>

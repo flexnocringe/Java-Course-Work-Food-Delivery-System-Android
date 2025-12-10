@@ -21,7 +21,7 @@ public class LocalDateTimeSerializer implements JsonSerializer<LocalDateTime>, J
         return LocalDateTime.parse(json.getAsString(),
                 DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss").withLocale(Locale.ENGLISH));
     }
-        private static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
+        public static final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss");
 
         @Override
         public JsonElement serialize(LocalDateTime localDateTime, Type srcType, JsonSerializationContext context) {
