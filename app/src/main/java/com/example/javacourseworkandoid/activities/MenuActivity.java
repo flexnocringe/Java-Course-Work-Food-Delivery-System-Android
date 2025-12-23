@@ -115,14 +115,14 @@ public class MenuActivity extends AppCompatActivity {
         ListView foodItemListElement = findViewById(R.id.restaurantMenuList);
         TextView totalPrice = findViewById(R.id.totalPriceView);
         Double price = Double.valueOf(totalPrice.getText().toString().split(": ")[1]);
-        List<FoodItem> foodItems = new ArrayList<>();
+        List<Integer> foodItems = new ArrayList<>();
 
         SparseBooleanArray checked = foodItemListElement.getCheckedItemPositions();
         for (int i = 0; i < checked.size(); i++) {
             int key = checked.keyAt(i);
             if (checked.valueAt(i)) {
                 FoodItem item = (FoodItem) foodItemListElement.getItemAtPosition(key);
-                foodItems.add(item);
+                foodItems.add(item.getId());
             }
         }
 
@@ -135,9 +135,10 @@ public class MenuActivity extends AppCompatActivity {
         orderJson.addProperty("userId", userId);
         orderJson.addProperty("restaurantId", restaurantId);
         orderJson.addProperty("price", price);
-        orderJson.add("foodItems", gson.toJsonTree(foodItems));
+        orderJson.add("foodItem", gson.toJsonTree(foodItems));
 
         orderInfo = gson.toJson(orderJson);
+        System.out.println(orderJson);
         Executor executor = Executors.newSingleThreadExecutor();
         Handler handler = new Handler(Looper.getMainLooper());
         executor.execute(()->{

@@ -11,6 +11,7 @@
         android:id="@+id/restaurant_list"
         android:layout_width="395dp"
         android:layout_height="243dp"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.238"
@@ -22,9 +23,10 @@
 
     <ListView
         android:id="@+id/readyForPickupOrders"
-        android:choiceMode="singleChoice"
         android:layout_width="390dp"
         android:layout_height="262dp"
+        android:choiceMode="singleChoice"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="5dp"
         tools:layout_editor_absoluteY="16dp">
 
@@ -36,6 +38,7 @@
         android:layout_height="wrap_content"
         android:onClick="viewPurchaseHistory"
         android:text="@string/view_history_btn"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/update_btn"
         app:layout_constraintStart_toStartOf="parent"
@@ -52,7 +55,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/history_btn"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_list"
-        app:layout_constraintVertical_bias="0.704" />
+        app:layout_constraintVertical_bias="0.659" />
 
     <Button
         android:id="@+id/startDeliveryButton"
@@ -60,11 +63,13 @@
         android:layout_height="wrap_content"
         android:onClick="pickupOrder"
         android:text="Pickup Order"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.23"
+        app:layout_constraintHorizontal_bias="0.185"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/history_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/history_btn"
+        app:layout_constraintVertical_bias="0.461" />
 
     <Button
         android:id="@+id/completeOrderButton"
@@ -72,18 +77,20 @@
         android:layout_height="wrap_content"
         android:onClick="completeOrder"
         android:text="CompleteOrder"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.815"
+        app:layout_constraintHorizontal_bias="0.849"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/restaurant_list"
-        app:layout_constraintVertical_bias="0.945" />
+        app:layout_constraintVertical_bias="0.904" />
 
     <ListView
         android:id="@+id/inDeliveryOrders"
         android:layout_width="409dp"
         android:layout_height="192dp"
         android:choiceMode="singleChoice"
+        android:visibility="visible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
